@@ -11,12 +11,14 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="product_apiFlow" doc:id="76b17530-acad-494a-a9ed-0b80e9e4574b" >
 		<http:listener doc:name="Listener" doc:id="2f52ec0b-3b71-4ad1-93e4-945a4167ecd7" config-ref="HTTP_Listener_config" path="/product"/>
 		<logger level="INFO" doc:name="Logger" doc:id="d52f75d4-356f-4f72-ad94-2ab0af0a8d14" />
-		<ee:transform doc:name="Transform Message" doc:id="6184e381-e357-4f8d-b6bc-775e3ab962a2" >
+		<ee:transform doc:name="output" doc:id="6184e381-e357-4f8d-b6bc-775e3ab962a2" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-"works"]]></ee:set-payload>
+{
+	"message": "works"
+}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
